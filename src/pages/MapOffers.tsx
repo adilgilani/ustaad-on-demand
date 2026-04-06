@@ -3,6 +3,15 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Star, MapPin, Clock, Banknote } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { mechanics } from '@/data/issues';
+import mechanicAli from '@/assets/mechanic-ali.jpg';
+import mechanicUsman from '@/assets/mechanic-usman.jpg';
+import mechanicMehmood from '@/assets/mechanic-mehmood.jpg';
+
+const avatarMap: Record<string, string> = {
+  '1': mechanicAli,
+  '2': mechanicUsman,
+  '3': mechanicMehmood,
+};
 
 const MapOffers = () => {
   const navigate = useNavigate();
@@ -43,10 +52,27 @@ const MapOffers = () => {
           <div className="w-4 h-4 bg-primary rounded-full relative">
             <div className="absolute inset-0 bg-primary rounded-full animate-pulse-ring" />
           </div>
+          <p className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] font-heading font-bold text-primary whitespace-nowrap bg-card/80 px-1.5 py-0.5 rounded">You are here</p>
+        </div>
+
+        {/* Mechanic pins on map */}
+        <div className="absolute top-[30%] left-[35%]">
+          <img src={mechanicAli} alt="Ali" className="w-8 h-8 rounded-full border-2 border-primary shadow-lg" />
+        </div>
+        <div className="absolute top-[25%] right-[25%]">
+          <img src={mechanicUsman} alt="Usman" className="w-8 h-8 rounded-full border-2 border-primary shadow-lg" />
+        </div>
+        <div className="absolute bottom-[30%] left-[25%]">
+          <img src={mechanicMehmood} alt="Mehmood" className="w-8 h-8 rounded-full border-2 border-primary shadow-lg" />
         </div>
 
         {loading && (
-          <div className="absolute inset-0 bg-card/60 flex items-center justify-center">
+          <div className="absolute inset-0 bg-card/60 flex flex-col items-center justify-center gap-3">
+            <div className="flex -space-x-2">
+              <img src={mechanicAli} alt="" className="w-10 h-10 rounded-full border-2 border-card" />
+              <img src={mechanicUsman} alt="" className="w-10 h-10 rounded-full border-2 border-card" />
+              <img src={mechanicMehmood} alt="" className="w-10 h-10 rounded-full border-2 border-card" />
+            </div>
             <motion.p
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
@@ -79,7 +105,7 @@ const MapOffers = () => {
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-lg">🔧</div>
+                      <img src={avatarMap[m.id]} alt={m.name} className="w-10 h-10 rounded-full object-cover" />
                       <div>
                         <p className="font-heading font-bold text-sm">{m.name}</p>
                         <div className="flex items-center gap-1 text-xs text-muted-foreground">

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import VehicleToggle from '@/components/VehicleToggle';
 import IssueCard from '@/components/IssueCard';
 import { mainIssues } from '@/data/issues';
+import ustaadLogo from '@/assets/ustaad-logo.png';
 
 const Home = () => {
   const [vehicle, setVehicle] = useState<'bike' | 'car'>('car');
@@ -28,18 +29,27 @@ const Home = () => {
     <div className="phone-frame pb-20">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-4 pb-1">
-        <div>
-          <h1 className="text-2xl font-heading font-bold text-foreground tracking-tight">Ustaad</h1>
-          <p className="text-xs font-body text-muted-foreground mt-0.5">Ustaad Pelug Shaat Hai!</p>
+        <div className="flex items-center gap-2.5">
+          <img src={ustaadLogo} alt="Ustaad" width={36} height={36} className="rounded-lg" />
+          <div>
+            <h1 className="text-xl font-heading font-bold text-foreground tracking-tight leading-none">Ustaad</h1>
+            <p className="text-[10px] font-body text-muted-foreground mt-0.5">Ustaad Pelug Shaat Hai!</p>
+          </div>
         </div>
-        <button className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
-          <User size={20} className="text-muted-foreground" />
+        <button className="w-9 h-9 rounded-full bg-muted flex items-center justify-center">
+          <User size={18} className="text-muted-foreground" />
         </button>
+      </div>
+
+      {/* Hero text */}
+      <div className="px-4 mt-3 mb-1">
+        <p className="text-sm font-body text-muted-foreground">Stuck on the road? Help is coming.</p>
+        <h2 className="text-lg font-heading font-bold text-foreground mt-0.5">What happened?</h2>
       </div>
 
       <VehicleToggle vehicle={vehicle} onChange={setVehicle} />
 
-      {/* Issue Grid */}
+      {/* Issue Grid — 3 columns */}
       <AnimatePresence mode="wait">
         <motion.div
           key={vehicle}
@@ -47,7 +57,7 @@ const Home = () => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: vehicle === 'car' ? -30 : 30 }}
           transition={{ duration: 0.25 }}
-          className="grid grid-cols-2 gap-3 px-4"
+          className="grid grid-cols-3 gap-2.5 px-4"
         >
           {filtered.map((issue, i) => (
             <IssueCard
