@@ -109,7 +109,7 @@ const Location = () => {
             onClick={handleContinue}
             className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-heading font-bold text-base"
           >
-            Find Ustaad Near Me
+            Confirm Location
           </motion.button>
         )}
       </div>

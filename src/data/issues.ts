@@ -34,8 +34,19 @@ export const otherIssues: Issue[] = [
   { id: 'other-ac', emoji: '🌬️', label: 'AC Not Working', vehicles: ['car'] },
 ];
 
-export const mechanics = [
-  { id: '1', name: 'Ali Karigar', rating: 4.8, distance: 1.2, eta: 8, fee: 300, badge: 'Nearest' as const },
-  { id: '2', name: 'Usman Ustaad', rating: 4.5, distance: 2.4, eta: 14, fee: 250, badge: 'Best Price' as const },
-  { id: '3', name: 'FastFix Mehmood', rating: 4.2, distance: 3.8, eta: 22, fee: 400, badge: null },
+export interface Mechanic {
+  id: string;
+  name: string;
+  rating: number;
+  distance: number;
+  eta: number;
+  fee: number;
+  badge: 'Nearest' | 'Best Price' | null;
+  avatar: string;
+}
+
+export const mechanics: Mechanic[] = [
+  { id: '1', name: 'Ali Karigar', rating: 4.8, distance: 1.2, eta: 8, fee: 300, badge: 'Nearest', avatar: '/src/assets/mechanic-ali.jpg' },
+  { id: '2', name: 'Usman Ustaad', rating: 4.5, distance: 2.4, eta: 14, fee: 250, badge: 'Best Price', avatar: '/src/assets/mechanic-usman.jpg' },
+  { id: '3', name: 'FastFix Mehmood', rating: 4.2, distance: 3.8, eta: 22, fee: 400, badge: null, avatar: '/src/assets/mechanic-mehmood.jpg' },
 ];

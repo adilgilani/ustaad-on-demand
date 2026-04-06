@@ -2,6 +2,15 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Phone, MessageCircle, X, Star, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import mechanicAli from '@/assets/mechanic-ali.jpg';
+import mechanicUsman from '@/assets/mechanic-usman.jpg';
+import mechanicMehmood from '@/assets/mechanic-mehmood.jpg';
+
+const avatarMap: Record<string, string> = {
+  '1': mechanicAli,
+  '2': mechanicUsman,
+  '3': mechanicMehmood,
+};
 
 const steps = ['Confirmed', 'On the Way', 'Arrived'];
 
@@ -46,7 +55,11 @@ const Tracking = () => {
 
         {/* Mechanic info */}
         <div className="flex items-center gap-3 mt-4">
-          <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-xl">🔧</div>
+          <img
+            src={avatarMap[mechanic?.id] || mechanicAli}
+            alt={mechanic?.name || 'Mechanic'}
+            className="w-12 h-12 rounded-full object-cover"
+          />
           <div>
             <p className="font-heading font-bold text-sm">{mechanic?.name || 'Ali Karigar'}</p>
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
