@@ -24,7 +24,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="phone-frame flex flex-col h-screen">
+    <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center gap-3 px-4 pt-4 pb-3 border-b border-border bg-card">
         <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">

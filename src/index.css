@@ -62,6 +62,214 @@
 
 @layer utilities {
   .phone-frame {
-    @apply max-w-[430px] mx-auto min-h-screen relative;
+    @apply max-w-[430px] mx-auto relative;
   }
+}
+
+/* ─── iPhone Showcase ─────────────────────────────────────── */
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #1a1040 0%, #0d0d1a 60%, #000 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px 60px;
+}
+
+/* Subtle desk reflection */
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgba(100, 60, 220, 0.08), transparent);
+  pointer-events: none;
+}
+
+.iphone-shell {
+  position: relative;
+  width: 393px;
+  flex-shrink: 0;
+  background: linear-gradient(160deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 56px;
+  padding: 14px;
+  box-shadow:
+    /* outer highlight */ 0 0 0 1px rgba(255,255,255,0.15),
+    /* bezel ring      */ 0 0 0 3px #111,
+    /* drop shadow     */ 0 40px 120px rgba(0,0,0,0.9),
+    0 20px 40px rgba(0,0,0,0.7),
+    /* inner glow      */ inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* Silent / volume buttons */
+.iphone-shell::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 118px;
+  width: 3px;
+  height: 30px;
+  background: #2c2c2e;
+  border-radius: 3px 0 0 3px;
+  box-shadow: 0 46px 0 #2c2c2e, 0 88px 0 #2c2c2e;
+}
+
+/* Power button */
+.iphone-shell::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 168px;
+  width: 3px;
+  height: 76px;
+  background: #2c2c2e;
+  border-radius: 0 3px 3px 0;
+}
+
+.iphone-screen {
+  background: hsl(40 20% 98%);
+  border-radius: 44px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 824px;
+  position: relative;
+}
+
+/* ── Status bar ── */
+.iphone-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px 0;
+  height: 54px;
+  position: relative;
+  z-index: 50;
+  flex-shrink: 0;
+  background: hsl(40 20% 98%);
+}
+
+.iphone-status-time {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.3px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+}
+
+/* ── Dynamic Island ── */
+.iphone-dynamic-island {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 126px;
+  height: 36px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 60;
+}
+
+.iphone-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ── Content area: sized flex box, no scroll ── */
+.iphone-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Scroll wrapper: fills iphone-content, scrolls for normal pages ── */
+.iphone-scroll-wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.iphone-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Home indicator ── */
+.iphone-home-indicator {
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(40 20% 98%);
+}
+
+.iphone-home-bar {
+  width: 134px;
+  height: 5px;
+  background: #000;
+  border-radius: 3px;
+  opacity: 0.18;
+}
+
+/* ── Label under phone ── */
+.iphone-label {
+  text-align: center;
+  margin-top: 24px;
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ─── Splash Screen ────────────────────────────────────────── */
+.splash-screen {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  border-radius: 44px;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.splash-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.splash-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.5px;
+  font-family: 'Barlow Condensed', sans-serif;
+  margin: 0;
+}
+
+.splash-tagline {
+  font-size: 15px;
+  color: #ff6500;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.2px;
 }

@@ -13,7 +13,7 @@ const BottomNav = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-card border-t border-border z-50">
+    <nav className="w-full bg-card border-t border-border">
       <div className="flex justify-around py-2">
         {tabs.map(({ icon: Icon, label, path }) => {
           const active = path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
